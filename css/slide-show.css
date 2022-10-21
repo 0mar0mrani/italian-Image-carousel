@@ -20,21 +20,37 @@ body {
 /* Images  */
 /****************/
 .slideshow__images {
+	max-height: 90vh;
+	width: 60vw;
 	display: flex;
-	justify-content: center;
-	height: 90vh;
+	align-items: center;
+	overflow-x: scroll;
+	scroll-snap-type: x mandatory;
+	/* overscroll-behavior-x: contain; */
+}
+
+.slideshow__images::-webkit-scrollbar  {
+	display: none;
 }
 
 .slideshow__image {
-	width: 100%;
-	height: auto;
+	border-right: solid 1px; 
+	background-color: blue;
+
+	scroll-snap-align: start;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60vw;
+	height: 90vh;
 } 
 
 .slideshow__image img {
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-	display: block;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 } 
 
 /****************/
