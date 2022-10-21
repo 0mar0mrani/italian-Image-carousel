@@ -34,8 +34,8 @@ body {
 }
 
 .slideshow__image {
-	border-right: solid 1px; 
-	background-color: blue;
+	/* border-right: solid 1px; 
+	background-color: blue; */
 
 	scroll-snap-align: start;
 	flex-shrink: 0;

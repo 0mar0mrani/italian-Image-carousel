@@ -2,6 +2,7 @@
 // Selecting elements
 // // // //
 const slideShowImages = document.querySelectorAll('.slideshow__image');
+const slideshowContainer = document.querySelectorAll('.slideshow__images');
 const buttonLeft = document.querySelector('.slideshow__button-left');
 const buttonRight = document.querySelector('.slideshow__button-right');
 const buttonsBelow = document.querySelectorAll('.slideshow__button');
@@ -75,8 +76,8 @@ function decreaseCurrentIndex() {
 	}
 }
 
-function updateImageAndButtons(oldIndex) {
-	showSlide(oldIndex);
+function updateImageAndButtons() {
+	slideToImage();
 	giveButtonBelowActiveClass();
 	hideArrowsAtEnd();
 	displayImageTextToCopy();
@@ -89,12 +90,10 @@ function goToSpecificImage(event) {
 	updateImageAndButtons(oldIndex);
 }
 
-function showSlide(oldIndex) {
-	for (let index = 0; index < slideShowImages.length; index += 1) {
-		slideShowImages[index].classList.remove('slideshow__image--visible');
-	}
-
-	slideShowImages[currentIndex].classList.add('slideshow__image--visible');
+function slideToImage() {
+	slideShowImages[currentIndex].scrollIntoView({
+		behavior: "smooth"
+	});
 }
 
 function hideArrowsAtEnd() {
