@@ -2,7 +2,7 @@
 // Selecting elements
 // // // //
 const slideShowImages = document.querySelectorAll('.slideshow__image');
-const slideshowContainer = document.querySelectorAll('.slideshow__images');
+const slideshowContainer = document.querySelector('.slideshow__images');
 const buttonLeft = document.querySelector('.slideshow__button-left');
 const buttonRight = document.querySelector('.slideshow__button-right');
 const buttonsBelow = document.querySelectorAll('.slideshow__button');
@@ -40,6 +40,12 @@ const debounce = (fn, delay) => {
 buttonRight.addEventListener('click', handleButtonRightClick);
 buttonLeft.addEventListener('click', handleButtonLeftClick);
 window.addEventListener('keydown', handleWindowKeyDown);
+slideshowContainer.addEventListener('scroll', debounce(handleSlideShowContainerScroll, 200));
+
+function currentImageGivesCurrentIndex() {
+	const currentImageIndex = Math.ceil(slideshowContainer.scrollLeft / slideshowContainer.offsetWidth);
+	currentIndex = currentImageIndex;
+}
 
 for(let index = 0; index < slideShowImages.length; index += 1) {
 	buttonsBelow[index].addEventListener('click', handleButtonsBelowClick);
@@ -68,6 +74,11 @@ function handleWindowKeyDown(event) {
 	} else if (key === 'ArrowLeft') {
 		decreaseCurrentIndex();
 	}
+}
+
+function handleSlideShowContainerScroll() {
+	currentImageGivesCurrentIndex();
+	updateImageButtonsAndText();
 }
 
 // // // //
