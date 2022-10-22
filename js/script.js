@@ -117,13 +117,13 @@ function slideToImage() {
 function hideArrowsAtEnd() {
 	if (currentIndex === minIndex) {
 		buttonLeft.classList.add('slideshow__button--hidden');
-	} else if (currentIndex === minIndex + 1){
+	} else {
 		buttonLeft.classList.remove('slideshow__button--hidden');
 	}
 
 	if (currentIndex === maxIndex) {
 		buttonRight.classList.add('slideshow__button--hidden');
-	}	else if (currentIndex === maxIndex - 1){
+	}	else {
 		buttonRight.classList.remove('slideshow__button--hidden');
 	}
 }
