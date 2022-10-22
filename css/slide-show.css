@@ -26,7 +26,6 @@ body {
 	align-items: center;
 	overflow-x: scroll;
 	scroll-snap-type: x mandatory;
-	/* overscroll-behavior-x: contain; */
 }
 
 .slideshow__images::-webkit-scrollbar  {
@@ -34,9 +33,6 @@ body {
 }
 
 .slideshow__image {
-	/* border-right: solid 1px; 
-	background-color: blue; */
-
 	scroll-snap-align: start;
 	flex-shrink: 0;
 	display: flex;
