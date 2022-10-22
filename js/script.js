@@ -102,7 +102,6 @@ function updateImageButtonsAndText() {
 }
 
 function goToSpecificImage(event) {
-	const oldIndex = currentIndex;
 	indexOfButton = Number(event.currentTarget.dataset.index);
 	currentIndex = indexOfButton;
 	updateImageButtonsAndText();
