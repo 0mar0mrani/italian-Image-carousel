@@ -89,18 +89,16 @@ function displayImageTextToCopy() {
 }
 
 function increaseCurrentIndex() {
-	const oldIndex = currentIndex
 	if (currentIndex < maxIndex) {
 		currentIndex += 1;
-		updateImageButtonsAndText(oldIndex);
+		updateImageButtonsAndText();
 	} 
 }
 
 function decreaseCurrentIndex() {
-	const oldIndex = currentIndex
 	if (currentIndex > minIndex) {
 		currentIndex -= 1;
-		updateImageButtonsAndText(oldIndex);
+		updateImageButtonsAndText();
 	}
 }
 
