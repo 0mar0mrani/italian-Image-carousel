@@ -17,6 +17,24 @@ const maxIndex = slideShowImages.length - 1;
 const minIndex = 0;
 
 // // // //
+// Debouncer
+// // // //
+// https://www.youtube.com/watch?v=B1P3GFa7jVc
+const debounce = (fn, delay) => {
+	let timeOutId;
+
+	return function(...args) {
+		if(timeOutId) {
+			clearTimeout(timeOutId);
+		}
+
+		timeOutId = setTimeout( () => {
+			fn(...args);
+		}, delay)
+	}
+}
+
+// // // //
 // Event Listeners
 // // // //
 buttonRight.addEventListener('click', handleButtonRightClick);
