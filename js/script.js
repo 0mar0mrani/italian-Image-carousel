@@ -82,7 +82,7 @@ function increaseCurrentIndex() {
 	const oldIndex = currentIndex
 	if (currentIndex < maxIndex) {
 		currentIndex += 1;
-		updateImageAndButtons(oldIndex);
+		updateImageButtonsAndText(oldIndex);
 	} 
 }
 
@@ -90,11 +90,11 @@ function decreaseCurrentIndex() {
 	const oldIndex = currentIndex
 	if (currentIndex > minIndex) {
 		currentIndex -= 1;
-		updateImageAndButtons(oldIndex);
+		updateImageButtonsAndText(oldIndex);
 	}
 }
 
-function updateImageAndButtons() {
+function updateImageButtonsAndText() {
 	slideToImage();
 	giveButtonBelowActiveClass();
 	hideArrowsAtEnd();
@@ -105,7 +105,7 @@ function goToSpecificImage(event) {
 	const oldIndex = currentIndex;
 	indexOfButton = Number(event.currentTarget.dataset.index);
 	currentIndex = indexOfButton;
-	updateImageAndButtons(oldIndex);
+	updateImageButtonsAndText();
 }
 
 function slideToImage() {
