@@ -127,19 +127,6 @@ function giveButtonIndexInHtml() {
 }
 
 // // // //
-// Functions For Animations
-// // // //
-function animateText() {
-	imageDescriptionCopy.classList.remove('slide-text')
-	const milliseconds = 1;
-
-	setTimeout(addClassName, milliseconds)
-
-	function addClassName() {
-		imageDescriptionCopy.classList.add('slide-text')
-	}
-}
-// // // //
 // Called functions 
 // // // //
 hideArrowsAtEnd();
