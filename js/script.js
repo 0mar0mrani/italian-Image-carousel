@@ -75,7 +75,6 @@ function handleWindowKeyDown(event) {
 // // // //
 function displayImageTextToCopy() {
 	imageDescriptionCopy.innerHTML = imageDescription[currentIndex].innerHTML;
-	animateText();
 }
 
 function increaseCurrentIndex() {
