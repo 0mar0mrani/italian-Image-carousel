@@ -83,8 +83,10 @@ function handleWindowKeyDown(event) {
 
 	if (key === 'ArrowRight') {
 		increaseCurrentIndex();
+		console.log('right');
 	} else if (key === 'ArrowLeft') {
 		decreaseCurrentIndex();
+		console.log('left');
 	}
 
 	slideToImage();
@@ -134,9 +136,7 @@ function goToSpecificImage(event) {
 }
 
 function slideToImage() {
-	slideShowImages[currentIndex].scrollIntoView({
-		behavior: "smooth"
-	});
+	slideshowContainer.scrollLeft = currentIndex * slideshowContainer.offsetWidth;
 }
 
 function hideArrowsAtEnd() {
