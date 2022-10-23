@@ -83,10 +83,8 @@ function handleWindowKeyDown(event) {
 
 	if (key === 'ArrowRight') {
 		increaseCurrentIndex();
-		console.log('right');
 	} else if (key === 'ArrowLeft') {
 		decreaseCurrentIndex();
-		console.log('left');
 	}
 
 	slideToImage();
@@ -97,7 +95,7 @@ function handleWindowKeyDown(event) {
 
 function handleSlideShowContainerScroll() {
 	if (disableScrollListenerFunction === false) {
-		currentImageGivesCurrentIndex();
+		getCurrentIndexOfImage();
 		giveButtonBelowActiveClass();
 		hideArrowsAtEnd();
 		displayImageTextToCopy();
@@ -109,8 +107,8 @@ function handleSlideShowContainerScroll() {
 // // // //
 // Functions
 // // // //
-function currentImageGivesCurrentIndex() {
-	const currentImageIndex = Math.ceil(slideshowContainer.scrollLeft / slideshowContainer.offsetWidth);
+function getCurrentIndexOfImage() {
+	const currentImageIndex = slideshowContainer.scrollLeft / slideshowContainer.offsetWidth;
 	currentIndex = currentImageIndex;
 }
 
