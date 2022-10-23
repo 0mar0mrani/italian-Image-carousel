@@ -41,7 +41,7 @@ const debounce = (fn, delay) => {
 buttonRight.addEventListener('click', handleButtonRightClick);
 buttonLeft.addEventListener('click', handleButtonLeftClick);
 window.addEventListener('keydown', handleWindowKeyDown);
-slideshowContainer.addEventListener('scroll', debounce(handleSlideShowContainerScroll, 200));
+slideshowContainer.addEventListener('scroll', debounce(handleSlideShowContainerScroll, 100));
 
 for(let index = 0; index < slideShowImages.length; index += 1) {
 	buttonsBelow[index].addEventListener('click', handleButtonsBelowClick);
