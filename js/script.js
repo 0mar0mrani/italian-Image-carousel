@@ -53,16 +53,28 @@ for(let index = 0; index < slideShowImages.length; index += 1) {
 function handleButtonRightClick() {
 	disableScrollListenerFunction = true;
 	increaseCurrentIndex();
+	slideToImage();
+	giveButtonBelowActiveClass();
+	hideArrowsAtEnd();
+	displayImageTextToCopy();
 }
 
 function handleButtonLeftClick() {
 	disableScrollListenerFunction = true;
 	decreaseCurrentIndex();
+	slideToImage();
+	giveButtonBelowActiveClass();
+	hideArrowsAtEnd();
+	displayImageTextToCopy();
 }
 
 function handleButtonsBelowClick(event) {
 	disableScrollListenerFunction = true;
-	goToSpecificImage(event)
+	goToSpecificImage(event);
+	slideToImage();
+	giveButtonBelowActiveClass();
+	hideArrowsAtEnd();
+	displayImageTextToCopy();
 }
 
 function handleWindowKeyDown(event) {
@@ -74,13 +86,19 @@ function handleWindowKeyDown(event) {
 	} else if (key === 'ArrowLeft') {
 		decreaseCurrentIndex();
 	}
+
+	slideToImage();
+	giveButtonBelowActiveClass();
+	hideArrowsAtEnd();
+	displayImageTextToCopy();
 }
 
 function handleSlideShowContainerScroll() {
 	if (disableScrollListenerFunction === false) {
-		console.log('scroll');
 		currentImageGivesCurrentIndex();
-		updateImageButtonsAndText();
+		giveButtonBelowActiveClass();
+		hideArrowsAtEnd();
+		displayImageTextToCopy();
 	}
 
 	disableScrollListenerFunction = false;
@@ -101,28 +119,18 @@ function displayImageTextToCopy() {
 function increaseCurrentIndex() {
 	if (currentIndex < maxIndex) {
 		currentIndex += 1;
-		updateImageButtonsAndText();
 	} 
 }
 
 function decreaseCurrentIndex() {
 	if (currentIndex > minIndex) {
 		currentIndex -= 1;
-		updateImageButtonsAndText();
 	}
-}
-
-function updateImageButtonsAndText() {
-	slideToImage();
-	giveButtonBelowActiveClass();
-	hideArrowsAtEnd();
-	displayImageTextToCopy();
 }
 
 function goToSpecificImage(event) {
 	indexOfButton = Number(event.currentTarget.dataset.index);
 	currentIndex = indexOfButton;
-	updateImageButtonsAndText();
 }
 
 function slideToImage() {
