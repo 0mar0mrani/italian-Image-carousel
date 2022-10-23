@@ -15,6 +15,7 @@ const imageDescriptionCopy = document.querySelector('.slideshow__text-copy');
 let currentIndex = 0;
 const maxIndex = slideShowImages.length - 1;
 const minIndex = 0;
+let disableScrollListenerFunction = false;
 
 // // // //
 // Debouncer
@@ -42,11 +43,6 @@ buttonLeft.addEventListener('click', handleButtonLeftClick);
 window.addEventListener('keydown', handleWindowKeyDown);
 slideshowContainer.addEventListener('scroll', debounce(handleSlideShowContainerScroll, 200));
 
-function currentImageGivesCurrentIndex() {
-	const currentImageIndex = Math.ceil(slideshowContainer.scrollLeft / slideshowContainer.offsetWidth);
-	currentIndex = currentImageIndex;
-}
-
 for(let index = 0; index < slideShowImages.length; index += 1) {
 	buttonsBelow[index].addEventListener('click', handleButtonsBelowClick);
 }
@@ -55,18 +51,22 @@ for(let index = 0; index < slideShowImages.length; index += 1) {
 // Handlers
 // // // //
 function handleButtonRightClick() {
+	disableScrollListenerFunction = true;
 	increaseCurrentIndex();
 }
 
 function handleButtonLeftClick() {
+	disableScrollListenerFunction = true;
 	decreaseCurrentIndex();
 }
 
 function handleButtonsBelowClick(event) {
+	disableScrollListenerFunction = true;
 	goToSpecificImage(event)
 }
 
 function handleWindowKeyDown(event) {
+	disableScrollListenerFunction = true;
 	const key = event.key;
 
 	if (key === 'ArrowRight') {
@@ -77,13 +77,23 @@ function handleWindowKeyDown(event) {
 }
 
 function handleSlideShowContainerScroll() {
-	currentImageGivesCurrentIndex();
-	updateImageButtonsAndText();
+	if (disableScrollListenerFunction === false) {
+		console.log('scroll');
+		currentImageGivesCurrentIndex();
+		updateImageButtonsAndText();
+	}
+
+	disableScrollListenerFunction = false;
 }
 
 // // // //
 // Functions
 // // // //
+function currentImageGivesCurrentIndex() {
+	const currentImageIndex = Math.ceil(slideshowContainer.scrollLeft / slideshowContainer.offsetWidth);
+	currentIndex = currentImageIndex;
+}
+
 function displayImageTextToCopy() {
 	imageDescriptionCopy.innerHTML = imageDescription[currentIndex].innerHTML;
 }
