@@ -154,17 +154,21 @@ body {
 	}
 
 	.slideshow__images {
-		display: flex;
 		flex-direction: column;
 		height: unset;
 		gap: 2rem;
 		margin: 2rem 1rem;
+		max-height: unset;
+		width: unset;
+		align-items: unset;
 	}
 
 	.slideshow__image {
 		max-width: 100%;
-		visibility: visible;
 		position: relative;
+		width: unset;
+		height: unset;
+		padding: 0;
 	} 
 
 	.slideshow__button-right, 
