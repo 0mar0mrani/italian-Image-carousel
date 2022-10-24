@@ -90,7 +90,7 @@ function handleSlideShowContainerScroll() {
 // Functions
 // // // //
 function getCurrentIndexOfImage() {
-	const currentImageIndex = slideshowContainer.scrollLeft / slideshowContainer.offsetWidth;
+	const currentImageIndex = Math.round(slideshowContainer.scrollLeft / slideshowContainer.offsetWidth);
 	currentIndex = currentImageIndex;
 }
 
