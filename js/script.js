@@ -18,12 +18,29 @@ const minIndex = 0;
 let disableScrollListenerFunction = false;
 
 // // // //
+ // Debouncer
+ // // // //
+ const debounce = (fn, delay) => {
+	let timeOutId;
+
+	return function(...args) {
+		if(timeOutId) {
+			clearTimeout(timeOutId);
+		}
+
+		timeOutId = setTimeout( () => {
+			fn(...args);
+		}, delay)
+	}
+}
+
+// // // //
 // Event Listeners
 // // // //
 buttonRight.addEventListener('click', handleButtonRightClick);
 buttonLeft.addEventListener('click', handleButtonLeftClick);
 window.addEventListener('keydown', handleWindowKeyDown);
-slideshowContainer.addEventListener('scroll', handleSlideShowContainerScroll);
+slideshowContainer.addEventListener('scroll', debounce(handleSlideShowContainerScroll, 100));
 
 for(let index = 0; index < slideShowImages.length; index += 1) {
 	buttonsBelow[index].addEventListener('click', handleButtonsBelowClick);
@@ -65,18 +82,23 @@ function handleWindowKeyDown(event) {
 
 	if (key === 'ArrowRight') {
 		increaseCurrentIndex();
+		slideToImage();
+		giveButtonBelowActiveClass();
+		hideArrowsAtEnd();
+		displayImageTextToCopy();
+
 	} else if (key === 'ArrowLeft') {
 		decreaseCurrentIndex();
+		slideToImage();
+		giveButtonBelowActiveClass();
+		hideArrowsAtEnd();
+		displayImageTextToCopy();
 	}
-
-	slideToImage();
-	giveButtonBelowActiveClass();
-	hideArrowsAtEnd();
-	displayImageTextToCopy();
 }
 
 function handleSlideShowContainerScroll() {
 	if (disableScrollListenerFunction === false) {
+		console.log('scroll');
 		getCurrentIndexOfImage();
 		giveButtonBelowActiveClass();
 		hideArrowsAtEnd();
