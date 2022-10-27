@@ -15,7 +15,6 @@ const imageDescriptionCopy = document.querySelector('.slideshow__text-copy');
 let currentIndex = 0;
 const maxIndex = slideShowImages.length - 1;
 const minIndex = 0;
-let disableScrollListenerFunction = false;
 
 // // // //
  // Debouncer
@@ -40,17 +39,33 @@ let disableScrollListenerFunction = false;
 buttonRight.addEventListener('click', handleButtonRightClick);
 buttonLeft.addEventListener('click', handleButtonLeftClick);
 window.addEventListener('keydown', handleWindowKeyDown);
-slideshowContainer.addEventListener('scroll', debounce(handleSlideShowContainerScroll, 100));
 
 for(let index = 0; index < slideShowImages.length; index += 1) {
 	buttonsBelow[index].addEventListener('click', handleButtonsBelowClick);
 }
 
+// For Mouse
+slideshowContainer.addEventListener('mouseenter', () => {
+	slideshowContainer.addEventListener('scroll', handleSlideShowContainerScroll);
+})
+
+slideshowContainer.addEventListener('mouseleave', () => {
+	slideshowContainer.removeEventListener('scroll', handleSlideShowContainerScroll);
+})
+
+// For Touch
+slideshowContainer.addEventListener('touchstart', () => {
+	slideshowContainer.addEventListener('scroll', handleSlideShowContainerScroll);
+})
+
+slideshowContainer.addEventListener('touchend', () => {
+	slideshowContainer.removeEventListener('scroll', handleSlideShowContainerScroll);
+})
+
 // // // //
 // Handlers
 // // // //
 function handleButtonRightClick() {
-	disableScrollListenerFunction = true;
 	increaseCurrentIndex();
 	slideToImage();
 	giveButtonBelowActiveClass();
@@ -59,7 +74,6 @@ function handleButtonRightClick() {
 }
 
 function handleButtonLeftClick() {
-	disableScrollListenerFunction = true;
 	decreaseCurrentIndex();
 	slideToImage();
 	giveButtonBelowActiveClass();
@@ -68,7 +82,6 @@ function handleButtonLeftClick() {
 }
 
 function handleButtonsBelowClick(event) {
-	disableScrollListenerFunction = true;
 	goToSpecificImage(event);
 	slideToImage();
 	giveButtonBelowActiveClass();
@@ -77,7 +90,6 @@ function handleButtonsBelowClick(event) {
 }
 
 function handleWindowKeyDown(event) {
-	disableScrollListenerFunction = true;
 	const key = event.key;
 
 	if (key === 'ArrowRight') {
@@ -97,15 +109,10 @@ function handleWindowKeyDown(event) {
 }
 
 function handleSlideShowContainerScroll() {
-	if (disableScrollListenerFunction === false) {
-		console.log('scroll');
-		getCurrentIndexOfImage();
-		giveButtonBelowActiveClass();
-		hideArrowsAtEnd();
-		displayImageTextToCopy();
-	}
-
-	disableScrollListenerFunction = false;
+	getCurrentIndexOfImage();
+	giveButtonBelowActiveClass();
+	hideArrowsAtEnd();
+	displayImageTextToCopy();
 }
 
 // // // //
