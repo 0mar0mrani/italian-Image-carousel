@@ -99,16 +99,16 @@ function handleWindowKeyDown(event) {
 }
 
 function handleSlideShowContainerScroll() {
-	getCurrentIndexOfImage();
+	getCIndexOfImage();
 	updateButtonsArrowsAndText();
 }
 
 // // // //
 // Functions
 // // // //
-function getCurrentIndexOfImage() {
-	const currentImageIndex = Math.round(slideshowContainer.scrollLeft / slideshowContainer.offsetWidth);
-	currentIndex = currentImageIndex;
+function getCIndexOfImage() {
+	const imageIndex = Math.round(slideshowContainer.scrollLeft / slideshowContainer.offsetWidth);
+	currentIndex = imageIndex;
 }
 
 function displayImageTextToCopy() {
