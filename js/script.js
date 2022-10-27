@@ -46,20 +46,20 @@ for(let index = 0; index < slideShowImages.length; index += 1) {
 
 // For Mouse
 slideshowContainer.addEventListener('mouseenter', () => {
-	slideshowContainer.addEventListener('scroll', handleSlideShowContainerScroll);
+	slideshowContainer.addEventListener('scroll', debounce(handleSlideShowContainerScroll, 20));
 })
 
 slideshowContainer.addEventListener('mouseleave', () => {
-	slideshowContainer.removeEventListener('scroll', handleSlideShowContainerScroll);
+	slideshowContainer.removeEventListener('scroll', debounce(handleSlideShowContainerScroll, 20));
 })
 
 // For Touch
 slideshowContainer.addEventListener('touchstart', () => {
-	slideshowContainer.addEventListener('scroll', handleSlideShowContainerScroll);
+	slideshowContainer.addEventListener('scroll', debounce(handleSlideShowContainerScroll, 20));
 })
 
 slideshowContainer.addEventListener('touchend', () => {
-	slideshowContainer.removeEventListener('scroll', handleSlideShowContainerScroll);
+	slideshowContainer.removeEventListener('scroll', debounce(handleSlideShowContainerScroll, 20));
 })
 
 // // // //
