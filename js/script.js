@@ -68,25 +68,19 @@ slideshowContainer.addEventListener('touchend', () => {
 function handleButtonRightClick() {
 	increaseCurrentIndex();
 	slideToImage();
-	giveButtonBelowActiveClass();
-	hideArrowsAtEnd();
-	displayImageTextToCopy();
+	updateButtonsArrowsAndText();
 }
 
 function handleButtonLeftClick() {
 	decreaseCurrentIndex();
 	slideToImage();
-	giveButtonBelowActiveClass();
-	hideArrowsAtEnd();
-	displayImageTextToCopy();
+	updateButtonsArrowsAndText();
 }
 
 function handleButtonsBelowClick(event) {
 	goToSpecificImage(event);
 	slideToImage();
-	giveButtonBelowActiveClass();
-	hideArrowsAtEnd();
-	displayImageTextToCopy();
+	updateButtonsArrowsAndText();
 }
 
 function handleWindowKeyDown(event) {
@@ -95,16 +89,12 @@ function handleWindowKeyDown(event) {
 	if (key === 'ArrowRight') {
 		increaseCurrentIndex();
 		slideToImage();
-		giveButtonBelowActiveClass();
-		hideArrowsAtEnd();
-		displayImageTextToCopy();
+		updateButtonsArrowsAndText();
 
 	} else if (key === 'ArrowLeft') {
 		decreaseCurrentIndex();
 		slideToImage();
-		giveButtonBelowActiveClass();
-		hideArrowsAtEnd();
-		displayImageTextToCopy();
+		updateButtonsArrowsAndText();
 	}
 }
 
@@ -176,6 +166,12 @@ function giveButtonIndexInHtml() {
 	}
 
 	buttonsBelow[currentIndex].classList.add('slideshow__button--active')
+}
+
+function updateButtonsArrowsAndText() {
+	giveButtonBelowActiveClass();
+	hideArrowsAtEnd();
+	displayImageTextToCopy();
 }
 
 // // // //
