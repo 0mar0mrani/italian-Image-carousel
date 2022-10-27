@@ -100,9 +100,7 @@ function handleWindowKeyDown(event) {
 
 function handleSlideShowContainerScroll() {
 	getCurrentIndexOfImage();
-	giveButtonBelowActiveClass();
-	hideArrowsAtEnd();
-	displayImageTextToCopy();
+	updateButtonsArrowsAndText();
 }
 
 // // // //
