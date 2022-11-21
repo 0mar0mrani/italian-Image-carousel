@@ -1,6 +1,8 @@
 # Italian Carousel 
 This is a image carousel of Italian food built with only HTML, CSS and JS. 
 
+Check out the carousel [here](https://italian-carousel.netlify.app).
+
 Highlight features: 
 - Possible to manually scroll and keep track of index, image and image text. 
 - Light on the browser using a debounce function when scrolling manually.
