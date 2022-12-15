@@ -1,4 +1,4 @@
-# Italian Carousel 
+# Italian Image Carousel 
 This is a image carousel of Italian food built with only HTML, CSS and JS. 
 
 Check out the carousel [here](https://italian-carousel.netlify.app).
